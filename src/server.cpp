@@ -45,6 +45,19 @@ int main() {
 	socklen_t sin_size = sizeof(struct sockaddr_in);
 	int new_fd = accept(sockfd, (struct sockaddr *)&remote_addr, &sin_size);
 
+	char buf[20];
+	string dest = "";
+
+	int nRec;
+	while((nRec = ::recv(sockfd, buf, 21, 0)) != -1) {
+	    buf[nRec] = '\0';
+	    // Hier landen alle gesendeten Daten (also auch von mehreren send()-Aufrufen)
+	    dest.append(buf);
+	}
+
+	delete [] buf;
+
+	cout << dest << endl;
 
 	return 1;
 }
