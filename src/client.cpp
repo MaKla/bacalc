@@ -34,7 +34,7 @@ public:
 		int connection_status = connect(sockfd, (struct sockaddr *)&dest_addr, sizeof(struct sockaddr));
 
 		if (connection_status == -1) {
-		  	cout << "connection failed (errno=" << errno << ")" << endl;
+			perror("Connection could not be established");
 		}
 
 	}
