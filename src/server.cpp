@@ -45,26 +45,32 @@ int main() {
 	socklen_t sin_size = sizeof(struct sockaddr_in);
 	int new_fd = accept(sockfd, (struct sockaddr *)&remote_addr, &sin_size);
 
+	cout << remote_addr.sin_addr.s_addr << endl;
+
+
 	char buf[20];
 	string dest = "";
 
 	int nRec;
 
-	while (nRec != -1) {
+	//while (nRec != -1) {
 		//nRec = recv(sockfd, buf, 21, 0);
 		nRec = read(sockfd, buf, 21);
 
-			if (nRec == -1) {
-				perror("Error occured while recieving");
-				return 1;
-			}
+		if (nRec == -1) {
+			perror("Error occured while recieving");
+			// return 1;
+		} else {
 			cout << "<(" << nRec << ") " << dest << endl;
 			buf[nRec] = '\0';
 			// Hier landen alle gesendeten Daten (also auch von mehreren send()-Aufrufen)
 			dest.append(buf);
+		}
+	//}
 
-	}
+	//char sockfd = "hello";
 
+	//write(sockfd, "hello", sizeof sockfd);
 
 	//delete [] buf;
 

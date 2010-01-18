@@ -40,11 +40,16 @@ public:
 	}
 
 	void _send(const char* msg) {
-		//int len = sizeof msg;
-		int len = 20;
+		int len = sizeof msg;
+		//int len = 20;
 
-		char buf[20] = "hallo";
-		int bytes_sent = send(sockfd, buf, len, 0);
+		//char buf[20] = "hallo";
+		//int bytes_sent = send(sockfd, buf, len, 0);
+		int bytes_sent = write(sockfd, msg, len);
+
+		char buf[20];
+
+		int bytes_read = read(sockfd, buf, sizeof buf);
 	}
 
 };
@@ -55,7 +60,6 @@ int main() {
 
 	client->_connect("127.0.0.1", 2000);
 	client->_send("hallo");
-
 
 
 
