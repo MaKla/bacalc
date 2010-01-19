@@ -48,17 +48,18 @@ int main() {
 	cout << remote_addr.sin_addr.s_addr << endl;
 
 
-	char buf[20];
+	char buf[256];
 	string dest = "";
 
 	int nRec;
 
 	//while (nRec != -1) {
 		//nRec = recv(sockfd, buf, 21, 0);
-		nRec = read(sockfd, buf, 21);
+		nRec = recv(sockfd, buf, 255, 0);
 
 		if (nRec == -1) {
 			perror("Error occured while recieving");
+			printf("Error number: %i", errno);
 			// return 1;
 		} else {
 			cout << "<(" << nRec << ") " << dest << endl;

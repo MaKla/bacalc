@@ -47,9 +47,9 @@ public:
 		//int bytes_sent = send(sockfd, buf, len, 0);
 		int bytes_sent = write(sockfd, msg, len);
 
-		char buf[20];
+		//char buf[20];
 
-		int bytes_read = read(sockfd, buf, sizeof buf);
+		//int bytes_read = read(sockfd, buf, sizeof buf);
 	}
 
 };
