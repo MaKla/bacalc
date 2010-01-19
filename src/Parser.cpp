@@ -10,9 +10,10 @@
 #include <iostream>
 #include <map>
 
+
 #define CSI 0x1b
 
-//using namespace std;
+using namespace std;
 
 class Parser {
 	
@@ -34,7 +35,7 @@ public:
 			if(i == 0){
 				// only numbers are allowed at the first position of the formula
 				if(checkValidChar(step) == NUMBER){
-					printf("\033[22;32mConstruct formula: %s\n",&step);
+					printf("\033[22;32mConstruct formula: %s",&step);
 					validForm.append(&step);
 				} else {
 					printf("\033[22;31m First sign has to be a number but is %s- deleting this sign;\n",&step);
@@ -101,8 +102,7 @@ public:
 		}
 		return validForm;
 	}
-	
-private: 
+	 
 	string validForm;
 	char step;
 	char errorChar;
@@ -117,6 +117,7 @@ private:
 	 * return 0 non valid
 	 */
 	int checkValidChar(char isValid) {
+//int Parser::checkValidChar(char isValid){
 		
 		validChars['1']=NUMBER;
 		validChars['2']=NUMBER;
