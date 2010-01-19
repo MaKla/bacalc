@@ -1,5 +1,6 @@
 #include "calculator.h"
 #include "ui_calculator.h"
+#include "Parser.cpp"
 
 QString host;
 QString port;
@@ -78,7 +79,15 @@ void Calculator::makeConnection()
 }
 void Calculator::submitTerm()
 {
-//submit term to server
+    term = ui->termInput->text();
+    Parser* p = new Parser();
+
+    //validate Term
+   //string test = term.fromStdString( p->validate(term.toStdString()));
+    QString test = term.fromStdString(p->validate(term.toStdString()));
+   QMessageBox::information(this,tr("Connection success"),test);
+   ui->termInput->setText(test);
+    //submit term to server
 }
 
 void Calculator::checkConnection()
