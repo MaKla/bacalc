@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>qtGuiCalculator</class>
- <widget class="QWidget" name="qtGuiCalculator">
+ <class>Calculator</class>
+ <widget class="QWidget" name="Calculator">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -1576,6 +1576,9 @@
           <bold>true</bold>
          </font>
         </property>
+        <property name="toolTip">
+         <string>Please insert hostname and port first.</string>
+        </property>
         <property name="text">
          <string>Test</string>
         </property>
@@ -1593,6 +1596,9 @@
           <weight>75</weight>
           <bold>true</bold>
          </font>
+        </property>
+        <property name="toolTip">
+         <string>You first have to check your connection.</string>
         </property>
         <property name="text">
          <string>Connect</string>

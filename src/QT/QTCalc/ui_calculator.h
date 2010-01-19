@@ -1,14 +1,14 @@
 /********************************************************************************
-** Form generated from reading UI file 'qtguicalculator.ui'
+** Form generated from reading UI file 'calculator.ui'
 **
-** Created: Mon 18. Jan 18:52:51 2010
+** Created: Tue 19. Jan 12:25:30 2010
 **      by: Qt User Interface Compiler version 4.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_QTGUICALCULATOR_H
-#define UI_QTGUICALCULATOR_H
+#ifndef UI_CALCULATOR_H
+#define UI_CALCULATOR_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
@@ -27,7 +27,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_qtGuiCalculator
+class Ui_Calculator
 {
 public:
     QTabWidget *tabWidget;
@@ -54,19 +54,19 @@ public:
     QPushButton *makeconButton;
     QWidget *helpTab;
 
-    void setupUi(QWidget *qtGuiCalculator)
+    void setupUi(QWidget *Calculator)
     {
-        if (qtGuiCalculator->objectName().isEmpty())
-            qtGuiCalculator->setObjectName(QString::fromUtf8("qtGuiCalculator"));
-        qtGuiCalculator->resize(266, 244);
+        if (Calculator->objectName().isEmpty())
+            Calculator->setObjectName(QString::fromUtf8("Calculator"));
+        Calculator->resize(266, 244);
         QPalette palette;
         QBrush brush(QColor(208, 217, 255, 255));
         brush.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Midlight, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Midlight, brush);
         palette.setBrush(QPalette::Disabled, QPalette::Midlight, brush);
-        qtGuiCalculator->setPalette(palette);
-        tabWidget = new QTabWidget(qtGuiCalculator);
+        Calculator->setPalette(palette);
+        tabWidget = new QTabWidget(Calculator);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(10, 0, 251, 241));
         calculatorTab = new QWidget();
@@ -368,39 +368,45 @@ public:
         helpTab->setObjectName(QString::fromUtf8("helpTab"));
         tabWidget->addTab(helpTab, QString());
 
-        retranslateUi(qtGuiCalculator);
+        retranslateUi(Calculator);
 
         tabWidget->setCurrentIndex(1);
 
 
-        QMetaObject::connectSlotsByName(qtGuiCalculator);
+        QMetaObject::connectSlotsByName(Calculator);
     } // setupUi
 
-    void retranslateUi(QWidget *qtGuiCalculator)
+    void retranslateUi(QWidget *Calculator)
     {
-        qtGuiCalculator->setWindowTitle(QApplication::translate("qtGuiCalculator", "qtGuiCalculator", 0, QApplication::UnicodeUTF8));
+        Calculator->setWindowTitle(QApplication::translate("Calculator", "qtGuiCalculator", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
-        qtGuiCalculator->setToolTip(QApplication::translate("qtGuiCalculator", "Make sure to have a connection an insert a term.", 0, QApplication::UnicodeUTF8));
+        Calculator->setToolTip(QApplication::translate("Calculator", "Make sure to have a connection an insert a term.", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("qtGuiCalculator", "Please insert your term ", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("Calculator", "Please insert your term ", 0, QApplication::UnicodeUTF8));
         termInput->setText(QString());
-        submitButton->setText(QApplication::translate("qtGuiCalculator", "Submit", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(calculatorTab), QApplication::translate("qtGuiCalculator", "Calculator", 0, QApplication::UnicodeUTF8));
-        hostLabel->setText(QApplication::translate("qtGuiCalculator", "Please insert the host ", 0, QApplication::UnicodeUTF8));
+        submitButton->setText(QApplication::translate("Calculator", "Submit", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(calculatorTab), QApplication::translate("Calculator", "Calculator", 0, QApplication::UnicodeUTF8));
+        hostLabel->setText(QApplication::translate("Calculator", "Please insert the host ", 0, QApplication::UnicodeUTF8));
         hostInput->setText(QString());
-        portLabel->setText(QApplication::translate("qtGuiCalculator", "Please insert the port", 0, QApplication::UnicodeUTF8));
-        testconButton->setText(QApplication::translate("qtGuiCalculator", "Test", 0, QApplication::UnicodeUTF8));
-        makeconButton->setText(QApplication::translate("qtGuiCalculator", "Connect", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(connectionTab), QApplication::translate("qtGuiCalculator", "Connection", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(helpTab), QApplication::translate("qtGuiCalculator", "Help", 0, QApplication::UnicodeUTF8));
+        portLabel->setText(QApplication::translate("Calculator", "Please insert the port", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        testconButton->setToolTip(QApplication::translate("Calculator", "Please insert hostname and port first.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        testconButton->setText(QApplication::translate("Calculator", "Test", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        makeconButton->setToolTip(QApplication::translate("Calculator", "You first have to check your connection.", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+        makeconButton->setText(QApplication::translate("Calculator", "Connect", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(connectionTab), QApplication::translate("Calculator", "Connection", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(helpTab), QApplication::translate("Calculator", "Help", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class qtGuiCalculator: public Ui_qtGuiCalculator {};
+    class Calculator: public Ui_Calculator {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_QTGUICALCULATOR_H
+#endif // UI_CALCULATOR_H

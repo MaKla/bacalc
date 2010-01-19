@@ -1,15 +1,14 @@
-#include "qtguicalculator.h"
-#include "ui_qtguicalculator.h"
-
+#include "calculator.h"
+#include "ui_calculator.h"
 
 QString host;
 QString port;
 QString term;
 
 
-qtGuiCalculator::qtGuiCalculator(QWidget *parent) :
+Calculator::Calculator(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::qtGuiCalculator)
+    ui(new Ui::Calculator)
 {
     ui->setupUi(this);
 
@@ -34,12 +33,12 @@ qtGuiCalculator::qtGuiCalculator(QWidget *parent) :
 
 }
 
-qtGuiCalculator::~qtGuiCalculator()
+Calculator::~Calculator()
 {
     delete ui;
 }
 
-void qtGuiCalculator::changeEvent(QEvent *e)
+void Calculator::changeEvent(QEvent *e)
 {
     QWidget::changeEvent(e);
     switch (e->type()) {
@@ -51,7 +50,7 @@ void qtGuiCalculator::changeEvent(QEvent *e)
     }
 }
 
-void qtGuiCalculator::testConnection()
+void Calculator::testConnection()
 {
     host = ui->hostInput->text();
     port = ui->portInput->value();
@@ -65,45 +64,44 @@ void qtGuiCalculator::testConnection()
     else
     {
         //test connection
-        //if success set enable connection button
-
+        //if success set bconnected = true
+        ui->makeconButton->setEnabled(true);
     }
-
 }
 
-void qtGuiCalculator::makeConnection()
+void Calculator::makeConnection()
 {
     //make a connection
+    QMessageBox::information(this,tr("Connection success"),tr("Your connection was sucessfull"));
+    //switch Tab view to calculator tab
+    ui->tabWidget->setCurrentIndex(0);
 }
-
-void qtGuiCalculator::submitTerm()
+void Calculator::submitTerm()
 {
 //submit term to server
 }
 
-
-void qtGuiCalculator::checkConnection()
+void Calculator::checkConnection()
 {
     host = ui->hostInput->text();
     if (!ui->testconButton->isEnabled()==true)
     {
         ui->testconButton->setEnabled(true);
     }
-    if (host=="")
+    if (host =="")
     {
         ui->testconButton->setEnabled(false);
     }
-
 }
 
-void qtGuiCalculator::checkTerm()
+void Calculator::checkTerm()
 {
-    term =ui->termInput->text();
-    if (! ui->submitButton->isEnabled()==true ||  term > "")
+    term = ui->termInput->text();
+    if (! ui->submitButton->isEnabled()==true)
     {
         ui->submitButton->setEnabled(true);
     }
-    if (term =="")
+    if (term=="")
     {
         ui->submitButton->setEnabled(false);
     }

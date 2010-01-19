@@ -1,15 +1,15 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'qtguicalculator.h'
+** Meta object code from reading C++ file 'calculator.h'
 **
-** Created: Mon 18. Jan 19:16:18 2010
+** Created: Tue 19. Jan 12:10:35 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../qtguicalculator.h"
+#include "../calculator.h"
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'qtguicalculator.h' doesn't include <QObject>."
+#error "The header file 'calculator.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
 #error "This file was generated using the moc from 4.6.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -17,7 +17,7 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-static const uint qt_meta_data_qtGuiCalculator[] = {
+static const uint qt_meta_data_Calculator[] = {
 
  // content:
        4,       // revision
@@ -31,44 +31,44 @@ static const uint qt_meta_data_qtGuiCalculator[] = {
        0,       // signalCount
 
  // slots: signature, parameters, type, tag, flags
-      17,   16,   16,   16, 0x0a,
-      34,   16,   16,   16, 0x0a,
-      51,   16,   16,   16, 0x0a,
-      64,   16,   16,   16, 0x0a,
-      82,   16,   16,   16, 0x0a,
+      12,   11,   11,   11, 0x0a,
+      29,   11,   11,   11, 0x0a,
+      46,   11,   11,   11, 0x0a,
+      59,   11,   11,   11, 0x0a,
+      77,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
-static const char qt_meta_stringdata_qtGuiCalculator[] = {
-    "qtGuiCalculator\0\0testConnection()\0"
+static const char qt_meta_stringdata_Calculator[] = {
+    "Calculator\0\0testConnection()\0"
     "makeConnection()\0submitTerm()\0"
     "checkConnection()\0checkTerm()\0"
 };
 
-const QMetaObject qtGuiCalculator::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_qtGuiCalculator,
-      qt_meta_data_qtGuiCalculator, 0 }
+const QMetaObject Calculator::staticMetaObject = {
+    { &QWidget::staticMetaObject, qt_meta_stringdata_Calculator,
+      qt_meta_data_Calculator, 0 }
 };
 
 #ifdef Q_NO_DATA_RELOCATION
-const QMetaObject &qtGuiCalculator::getStaticMetaObject() { return staticMetaObject; }
+const QMetaObject &Calculator::getStaticMetaObject() { return staticMetaObject; }
 #endif //Q_NO_DATA_RELOCATION
 
-const QMetaObject *qtGuiCalculator::metaObject() const
+const QMetaObject *Calculator::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
 }
 
-void *qtGuiCalculator::qt_metacast(const char *_clname)
+void *Calculator::qt_metacast(const char *_clname)
 {
     if (!_clname) return 0;
-    if (!strcmp(_clname, qt_meta_stringdata_qtGuiCalculator))
-        return static_cast<void*>(const_cast< qtGuiCalculator*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_Calculator))
+        return static_cast<void*>(const_cast< Calculator*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
-int qtGuiCalculator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Calculator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

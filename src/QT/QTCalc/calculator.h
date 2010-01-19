@@ -1,24 +1,24 @@
-#ifndef QTGUICALCULATOR_H
-#define QTGUICALCULATOR_H
+#ifndef Calculator_H
+#define Calculator_H
 
 #include <QWidget>
 #include <QMessageBox>
 
 namespace Ui {
-    class qtGuiCalculator;
+    class Calculator;
 }
 
-class qtGuiCalculator : public QWidget {
+class Calculator : public QWidget {
     Q_OBJECT
 public:
-    qtGuiCalculator(QWidget *parent = 0);
-    ~qtGuiCalculator();
+    Calculator(QWidget *parent = 0);
+    ~Calculator();
 
 protected:
     void changeEvent(QEvent *e);
-     bool connectStatus;
+
 private:
-    Ui::qtGuiCalculator *ui;
+    Ui::Calculator *ui;
 
 //action handler
 public slots:
@@ -30,4 +30,4 @@ public slots:
 
 };
 
-#endif // QTGUICALCULATOR_H
+#endif // Calculator_H
