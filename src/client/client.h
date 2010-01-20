@@ -1,7 +1,6 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-// client.h
 #include <QtNetwork>
 #include <QObject>
 #include <QString>
@@ -14,12 +13,11 @@ public:
   Client(QObject* parent = 0);
   ~Client();
   void start(QString address, quint16 port);
+  char* data;
 public slots:
   void startTransfer();
 private:
   QTcpSocket client;
 };
-
-
 
 #endif // CLIENT_H

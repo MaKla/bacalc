@@ -88,6 +88,7 @@ char* Processor::process(const char* input) {
 
     double bla = Value_Of_Expr(input);
     cout << "BLA: " << bla << endl;
+    return "bye";
 
     //char first_number[1024];
     //int  first_number_pointer = 0;

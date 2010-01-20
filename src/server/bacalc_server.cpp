@@ -2,6 +2,7 @@
 #include <bacalc_server.h>
 #include <bacalc_processor.h>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -34,7 +35,14 @@ void Server::startRead()
 {
   char buffer[1024] = {0};
   client->read(buffer, client->bytesAvailable());
+  printf("Incoming request: '%s'\n", buffer);
   char* result = processor.process(buffer);
+
+  ostringstream o;
+  o << result;
+
+  client->write(o.str().c_str());
+
   //cout << buffer << endl;
   client->close();
 }

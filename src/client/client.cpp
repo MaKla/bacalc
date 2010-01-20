@@ -1,7 +1,8 @@
-
 #include "client.h"
 #include <QHostAddress>
 #include <iostream>
+
+using namespace std;
 
 Client::Client(QObject* parent): QObject(parent)
 {
@@ -22,7 +23,10 @@ void Client::start(QString address, quint16 port)
 
 void Client::startTransfer()
 {
-  printf("Sending data");
-  int r = client.write("Kack mich an", 13);
-  printf("%i", r);
+  client.write(data, ((int)sizeof data)+1);
+
+  char buffer[1024] = {0};
+  client.read(buffer, client->bytesAvailable());
+
+  cout << buffer << endl;
 }
