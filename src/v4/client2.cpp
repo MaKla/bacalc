@@ -9,18 +9,10 @@
 using namespace std;
 
 char* calc(char* input) {
+	char input_buf[((int) sizeof input) + 1];
 
-}
+	sprintf(input_buf, input);
 
-//char* path = "../server/server";
-
-int main() {
-
-    printf("Please enter some text!");
-
-    char t[sizeof (*stdin)];
-
-    scanf("%s", t);
 
     cout << "Initializing socket" << endl;
     int s = socket(AF_INET, SOCK_STREAM, 0);
@@ -65,18 +57,27 @@ int main() {
 
         sleep(2);
 
-        write(s, &t, 300);
-        printf("Sending text: %s\n", t);
+        write(s, &input_buf, 300);
+        printf("Sending text: %s\n", input_buf);
 
-        read(s, &t, 300);
-        printf("Receiving text: %s\n", t);
+        read(s, &input_buf, 300);
+        printf("Receiving text: %s\n", input_buf);
 
 //        i++;
  //   }
 
     close(s);
 
-    return 0;
+    //return 0;
+
+}
+
+//char* path = "../server/server";
+
+int main() {
+
+	calc("3+4");
+
 }
 
 /* CLIENT_TCP_SOURCE */
