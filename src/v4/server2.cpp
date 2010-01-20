@@ -98,9 +98,9 @@ int main() {
         cout << "Incoming request '" << strg << "'" << endl;
 
 
-        bacalc_s->bla(strg);
 
-        strcat(strg, hello);
+
+        strcat(strg, bacalc_s->bla(strg));
 
 
         cout << "Sending Result '" << strg << "'" << endl;
