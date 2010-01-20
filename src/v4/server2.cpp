@@ -3,6 +3,7 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include <unistd.h>
+#include <sstream>
 #include <iostream>
 
 const char* address = "127.0.0.1";
@@ -10,7 +11,26 @@ const int port = 9735;
 
 using namespace std;
 
+class BacalcServer {
+public:
+	char* bla(char* input) {
+		ostringstream o;
+		ostringstream r;
+
+		o << input;
+
+		cout << "--" << input << "--" << endl;
+	}
+
+	void echo() {
+		cout << "asdf" << endl;
+	}
+	double calc_result;
+};
+
 int main() {
+
+	//double calc_result;
 
 	cout << "Initializing socket" << endl;
     int s = socket(AF_INET, SOCK_STREAM, 0);
@@ -58,10 +78,18 @@ int main() {
 
     char hello[300] = "Hello!";
 
+    //ostringstream incoming_converter;
+    //ostringstream outgoing_converter;
+
+    BacalcServer* bacalc_s = new BacalcServer();
+
     while (1) {
 
         read(cls, &strg, 300);
         cout << "Incoming request '" << strg << "'" << endl;
+
+
+        bacalc_s->bla(strg);
 
         strcat(strg, hello);
 
