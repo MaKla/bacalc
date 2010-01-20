@@ -1,9 +1,10 @@
 #include "calculator.h"
 #include "ui_calculator.h"
 #include "Parser.cpp"
+#include "../client/client.cpp"
 
 QString host;
-QString port;
+int port;
 QString term;
 
 
@@ -56,7 +57,7 @@ void Calculator::testConnection()
     host = ui->hostInput->text();
     port = ui->portInput->value();
 
-    if (host ==""||port =="")
+    if (host ==""||port <= 0)
     {
         QMessageBox::information(this,tr("Empty port or hostname"),tr("Please enter a hostname and a port"));
         ui->testconButton->setEnabled(false);
@@ -64,9 +65,18 @@ void Calculator::testConnection()
     }
     else
     {
+        cout << port << endl;
+        char* result = calc("3+4", (char*) host.toStdString().c_str(), port);
         //test connection
         //if success set bconnected = true
-        ui->makeconButton->setEnabled(true);
+
+        if (atoi(result) == 7) {
+            ui->makeconButton->setEnabled(true);
+        } else {
+            QMessageBox::critical(this,tr("Connection failed"),tr("Connection failed, please verify host and port"));
+        }
+
+
     }
 }
 

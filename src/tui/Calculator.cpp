@@ -22,7 +22,6 @@ void input() {
 		char* result = calc((char*) outputFormula.c_str());
 		// roebi, hier kannst du irgendwas mit result machen, du kanns auch
 		// den kompletten aufruf verschieben
-
 	}
 }
 

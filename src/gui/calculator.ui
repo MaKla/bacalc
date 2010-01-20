@@ -595,7 +595,7 @@
        <x>10</x>
        <y>10</y>
        <width>221</width>
-       <height>191</height>
+       <height>192</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1054,7 +1054,7 @@
          </font>
         </property>
         <property name="text">
-         <string/>
+         <string>127.0.0.1</string>
         </property>
        </widget>
       </item>
@@ -1518,12 +1518,6 @@
         </item>
         <item>
          <widget class="QSpinBox" name="portInput">
-          <property name="maximumSize">
-           <size>
-            <width>50</width>
-            <height>16777215</height>
-           </size>
-          </property>
           <property name="alignment">
            <set>Qt::AlignHCenter|Qt::AlignTop</set>
           </property>
@@ -1531,7 +1525,7 @@
            <number>64000</number>
           </property>
           <property name="value">
-           <number>2000</number>
+           <number>9020</number>
           </property>
          </widget>
         </item>
@@ -1566,7 +1560,7 @@
       <item>
        <widget class="QPushButton" name="testconButton">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="font">
          <font>
