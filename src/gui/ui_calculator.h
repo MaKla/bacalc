@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'calculator.ui'
 **
-** Created: Tue 19. Jan 12:25:30 2010
+** Created: Wed Jan 20 15:05:07 2010
 **      by: Qt User Interface Compiler version 4.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -195,7 +195,7 @@ public:
         connectionTab->setObjectName(QString::fromUtf8("connectionTab"));
         verticalLayoutWidget_2 = new QWidget(connectionTab);
         verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 221, 191));
+        verticalLayoutWidget_2->setGeometry(QRect(10, 10, 221, 192));
         verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -330,10 +330,9 @@ public:
 
         portInput = new QSpinBox(verticalLayoutWidget_2);
         portInput->setObjectName(QString::fromUtf8("portInput"));
-        portInput->setMaximumSize(QSize(50, 16777215));
         portInput->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         portInput->setMaximum(64000);
-        portInput->setValue(2000);
+        portInput->setValue(9020);
 
         horizontalLayout->addWidget(portInput);
 
@@ -350,7 +349,7 @@ public:
 
         testconButton = new QPushButton(verticalLayoutWidget_2);
         testconButton->setObjectName(QString::fromUtf8("testconButton"));
-        testconButton->setEnabled(false);
+        testconButton->setEnabled(true);
         testconButton->setFont(font2);
 
         verticalLayout_2->addWidget(testconButton);
@@ -387,7 +386,7 @@ public:
         submitButton->setText(QApplication::translate("Calculator", "Submit", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(calculatorTab), QApplication::translate("Calculator", "Calculator", 0, QApplication::UnicodeUTF8));
         hostLabel->setText(QApplication::translate("Calculator", "Please insert the host ", 0, QApplication::UnicodeUTF8));
-        hostInput->setText(QString());
+        hostInput->setText(QApplication::translate("Calculator", "127.0.0.1", 0, QApplication::UnicodeUTF8));
         portLabel->setText(QApplication::translate("Calculator", "Please insert the port", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         testconButton->setToolTip(QApplication::translate("Calculator", "Please insert hostname and port first.", 0, QApplication::UnicodeUTF8));

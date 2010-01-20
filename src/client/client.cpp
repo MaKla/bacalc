@@ -9,7 +9,7 @@
 
 using namespace std;
 
-char* calc(char* input) {
+char* calc(char* input, char* address = "127.0.0.1", int port = 9020) {
 	char input_buf[((int) sizeof input) + 1];
 
 	sprintf(input_buf, input);
@@ -35,17 +35,18 @@ char* calc(char* input) {
     struct sockaddr_in a;
 
     a.sin_family = AF_INET;
-    a.sin_addr.s_addr = inet_addr("127.0.0.1");
-    a.sin_port = 9735;
+    a.sin_addr.s_addr = inet_addr(address);
+    a.sin_port = port;
 
     int as = sizeof(a);
 
+    cout << "Connecting host " << address << " port " << port << endl;
     int r = connect(s, (struct sockaddr*) &a, as);
 
     if (r == -1) {
 
         perror("Error with client.");
-        exit(1);
+        return "0";
 
     } else {
 
