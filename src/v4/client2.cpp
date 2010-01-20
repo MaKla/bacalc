@@ -72,7 +72,7 @@ char* calc(char* input) {
     ostringstream o;
     o << input_buf;
 
-    return o.str().c_str();
+    return (char*) o.str().c_str();
     //return 0;
 
 }
@@ -81,8 +81,9 @@ char* calc(char* input) {
 
 int main() {
 
-	calc("3+4");
+	char* result = calc("3+4");
 
+	cout << "Result: " << result << endl;
 }
 
 /* CLIENT_TCP_SOURCE */
