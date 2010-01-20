@@ -4,8 +4,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <iostream>
 
-char* path = "../server/server";
+using namespace std;
+
+char* calc(char* input) {
+
+}
+
+//char* path = "../server/server";
 
 int main() {
 
@@ -15,8 +22,13 @@ int main() {
 
     scanf("%s", t);
 
+    cout << "Initializing socket" << endl;
     int s = socket(AF_INET, SOCK_STREAM, 0);
-
+	if (s == -1) {
+		perror("Error on initializing socket");
+		exit(1);
+	}
+/*
     int p = fork();
 
     if (p < 0)
@@ -24,7 +36,7 @@ int main() {
         fprintf(stderr, "Error with fork()");
 
     if (p == 0) execl(path, NULL);
-
+*/
     sleep(2);
 
     struct sockaddr_in a;
