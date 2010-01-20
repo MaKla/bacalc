@@ -4,6 +4,9 @@
 #include <string.h>
 #include <unistd.h>
 
+const char* address = "127.0.0.1";
+const int port = 9735;
+
 int main() {
 
     int s = socket(AF_INET, SOCK_STREAM, 0);
@@ -11,8 +14,8 @@ int main() {
     struct sockaddr_in sa;
 
     sa.sin_family = AF_INET;
-    sa.sin_addr.s_addr = inet_addr("127.0.0.1");
-    sa.sin_port = 9735;
+    sa.sin_addr.s_addr = inet_addr(address);
+    sa.sin_port = port;
 
     int sas = sizeof(sa);
 
