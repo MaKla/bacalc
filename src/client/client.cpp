@@ -78,13 +78,13 @@ char* calc(char* input) {
 }
 
 //char* path = "../server/server";
-
+/*
 int main() {
 
 	char* result = calc("3+4");
 
 	cout << "Result: " << result << endl;
 }
-
+*/
 /* CLIENT_TCP_SOURCE */
 #endif
