@@ -19,7 +19,10 @@ void input() {
 		cout << outputFormula << endl;
 		printf("\033[22;30m");
 
-		cout << calc((char*) outputFormula.c_str()) << endl;
+		char* result = calc((char*) outputFormula.c_str());
+		// roebi, hier kannst du irgendwas mit result machen, du kanns auch
+		// den kompletten aufruf verschieben
+
 	}
 }
 
