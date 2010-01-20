@@ -1,6 +1,7 @@
 #include "calculator.h"
 #include "ui_calculator.h"
 #include "Parser.cpp"
+#include "../client/client.cpp"
 
 QString host;
 QString port;
@@ -64,9 +65,14 @@ void Calculator::testConnection()
     }
     else
     {
+
+        calc("2+2");
         //test connection
         //if success set bconnected = true
         ui->makeconButton->setEnabled(true);
+
+
+
     }
 }
 
