@@ -61,7 +61,12 @@ int main() {
     while (1) {
 
         read(cls, &strg, 300);
+        cout << "Incoming request '" << strg << "'" << endl;
+
         strcat(strg, hello);
+
+
+        cout << "Sending Result '" << strg << "'" << endl;
         write(cls, &strg, 300);
     }
 
