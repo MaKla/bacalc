@@ -30,11 +30,11 @@ public:
 
 		return (char*) r.str().c_str();
 	}
-
+/*
 	void echo() {
 		cout << "asdf" << endl;
 	}
-
+*/
 };
 
 int main() {
@@ -69,7 +69,7 @@ int main() {
     char strg[300];
 
     cout << "Listening" << endl;
-	int check_listen = listen(s, 5);
+	int check_listen = listen(s, 5000);
 	if (check_listen == -1) {
 		perror("Error while listening on socket");
 		exit(1);
@@ -79,34 +79,41 @@ int main() {
 
     int clas = sizeof(cla);
 
-    cout << "Accepting" << endl;
-	int cls = accept(s, (struct sockaddr*) &cla, (socklen_t*) &clas);
-	if (cls == -1) {
-		perror("Error while accepting");
-	}
-
-    char hello[300] = "Hello!";
-
-    //ostringstream incoming_converter;
-    //ostringstream outgoing_converter;
-
-    BacalcServer* bacalc_s = new BacalcServer();
-
     while (1) {
+		cout << "Accepting" << endl;
+		int cls = accept(s, (struct sockaddr*) &cla, (socklen_t*) &clas);
+		if (cls == -1) {
+			perror("Error while accepting");
+		}
 
-        read(cls, &strg, 300);
-        cout << "Incoming request '" << strg << "'" << endl;
+		char hello[300] = "Hello!";
+
+		//ostringstream incoming_converter;
+		//ostringstream outgoing_converter;
+
+		BacalcServer* bacalc_s = new BacalcServer();
+
+		while (1) {
+
+			if (read(cls, &strg, 300) == -1 ){
+				perror("Error while reading");
+			}
+			cout << "Incoming request '" << strg << "'" << endl;
 
 
-        //strcat(strg, bacalc_s->bla(strg));
-        sprintf(strg, bacalc_s->bla(strg));
+			//strcat(strg, bacalc_s->bla(strg));
+			sprintf(strg, bacalc_s->bla(strg));
 
 
-        cout << "Sending Result '" << strg << "'" << endl;
-        write(cls, &strg, 300);
+			cout << "Sending Result '" << strg << "'" << endl;
+			if (write(cls, &strg, 300) == -1 ){
+				perror("Error while writing");
+			}
+
+		}
+
+		//close(cls);
     }
-
-    close(cls);
     close(s);
 }
 

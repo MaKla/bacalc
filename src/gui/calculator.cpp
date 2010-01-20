@@ -54,10 +54,10 @@ void Calculator::changeEvent(QEvent *e)
 
 void Calculator::testConnection()
 {
-    testhost = ui->hostInput->text();
-    testport = ui->portInput->value();
+    QString testhost = ui->hostInput->text();
+    int testport = ui->portInput->value();
 
-    if (host ==""||port <= 0)
+    if (testhost.length() <= 0 || testport <= 0)
     {
         QMessageBox::information(this,tr("Empty port or hostname"),tr("Please enter a hostname and a port"));
         ui->testconButton->setEnabled(false);
@@ -100,12 +100,16 @@ void Calculator::submitTerm()
    //string test = term.fromStdString( p->validate(term.toStdString()));
    QString validterm = term.fromStdString(p->validate(term.toStdString()));
    //send term to server
-   char* tempresult = calc(validterm.toStdString(), (char*) *host.toStdString().c_str(), *testport);
+   char* tempresult = calc(
+        (char*) validterm.toStdString().c_str(),
+        (char*) (*host).toStdString().c_str(),
+        *port
+   );
 
    //cast char to QString
    result << tempresult ;
 
-   qstringResult.fromStdString(result);
+   qstringResult.fromStdString(result.str());
    //show result
    ui->termInput->setText(qstringResult);
     //submit term to server
@@ -113,12 +117,12 @@ void Calculator::submitTerm()
 
 void Calculator::checkConnection()
 {
-    host = ui->hostInput->text();
+    *host = ui->hostInput->text();
     if (!ui->testconButton->isEnabled()==true)
     {
         ui->testconButton->setEnabled(true);
     }
-    if (host =="")
+    if (host->length() <= 0)
     {
         ui->testconButton->setEnabled(false);
     }
