@@ -3,8 +3,8 @@
 #include "Parser.cpp"
 #include "../client/client.cpp"
 
-QString host;
-int port;
+QString *host;
+int *port;
 QString term;
 
 
@@ -54,8 +54,8 @@ void Calculator::changeEvent(QEvent *e)
 
 void Calculator::testConnection()
 {
-    host = ui->hostInput->text();
-    port = ui->portInput->value();
+    testhost = ui->hostInput->text();
+    testport = ui->portInput->value();
 
     if (host ==""||port <= 0)
     {
@@ -66,13 +66,19 @@ void Calculator::testConnection()
     else
     {
         cout << port << endl;
-        char* result = calc("3+4", (char*) host.toStdString().c_str(), port);
+        char* result = calc("3+4", (char*) testhost.toStdString().c_str(), testport);
         //test connection
         //if success set bconnected = true
 
-        if (atoi(result) == 7) {
+        if (atoi(result) == 7)
+        {
+            QMessageBox::information(this,tr("Connection test success"),tr("Test sucessfull"));
             ui->makeconButton->setEnabled(true);
-        } else {
+            *host = testhost;
+            *port = testport;
+        }
+        else
+        {
             QMessageBox::critical(this,tr("Connection failed"),tr("Connection failed, please verify host and port"));
         }
 
@@ -82,21 +88,26 @@ void Calculator::testConnection()
 
 void Calculator::makeConnection()
 {
-    //make a connection
-    QMessageBox::information(this,tr("Connection success"),tr("Your connection was sucessfull"));
-    //switch Tab view to calculator tab
     ui->tabWidget->setCurrentIndex(0);
 }
 void Calculator::submitTerm()
 {
     term = ui->termInput->text();
     Parser* p = new Parser();
-
+    ostringstream result ;
+    QString qstringResult ;
     //validate Term
    //string test = term.fromStdString( p->validate(term.toStdString()));
-    QString test = term.fromStdString(p->validate(term.toStdString()));
-   QMessageBox::information(this,tr("Connection success"),test);
-   ui->termInput->setText(test);
+   QString validterm = term.fromStdString(p->validate(term.toStdString()));
+   //send term to server
+   char* tempresult = calc(validterm.toStdString(), (char*) *host.toStdString().c_str(), *testport);
+
+   //cast char to QString
+   result << tempresult ;
+
+   qstringResult.fromStdString(result);
+   //show result
+   ui->termInput->setText(qstringResult);
     //submit term to server
 }
 
