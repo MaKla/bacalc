@@ -47,9 +47,9 @@ int main() {
         printf("Connected to server.\n");
     }
 
-    int i = 0;
+   // int i = 0;
 
-    while (i < 10) {
+    //while (i < 10) {
 
         sleep(2);
 
@@ -59,8 +59,8 @@ int main() {
         read(s, &t, 300);
         printf("Receiving text: %s\n", t);
 
-        i++;
-    }
+//        i++;
+ //   }
 
     close(s);
 
