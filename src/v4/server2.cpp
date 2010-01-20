@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <iostream>
+#include <tools.cpp>
 
 const char* address = "127.0.0.1";
 const int port = 9735;
@@ -17,15 +18,23 @@ public:
 		ostringstream o;
 		ostringstream r;
 
+		double calc_result;
+
 		o << input;
 
-		cout << "--" << input << "--" << endl;
+		calc_result = Value_Of_Expr(o.str());
+
+		r << calc_result;
+
+		cout << "--" << calc_result << "--" << endl;
+
+		return (char*) r.str().c_str();
 	}
 
 	void echo() {
 		cout << "asdf" << endl;
 	}
-	double calc_result;
+
 };
 
 int main() {
