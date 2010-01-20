@@ -27,21 +27,35 @@ void input() {
 }
 
 int main(int argc, char** argv){
-
-
 	string menuElect;
-	
-	input();
-
+	string host, port;
 	bool cond = true;
 
+
+	cout << "Please enter servername or ip: ";
+	getline(cin, host);
+	cout << "Please enter port: ";
+	getline(cin, port);
+	while (cond) {
+		if(atoi((char*) port.c_str()) == 0){
+			printf("\033[22;31mA port can only contain digits.");
+			printf("\033[22;30m\n");
+			cout << "Please enter port: ";
+			getline(cin, port);
+		} else{
+			cond = false;
+		}
+	}	
+	input();
+
+	cond = true;
 	while (cond) {
 
 		cout << "Try new formula [y/n]: ";
 		getline(cin, menuElect);
 
 		if(menuElect == "y"){
-            input();
+ 	           input();
 		} else {
 			cond = false;
 		}
