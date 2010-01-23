@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sstream>
 #include <iostream>
+#include <stdlib.h>
 #include <tools.cpp>
 
 const char* address = "127.0.0.1";

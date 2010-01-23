@@ -65,8 +65,9 @@ void Calculator::testConnection()
     }
     else
     {
-        cout << port << endl;
+        cout << testport << endl;
         char* result = calc("3+4", (char*) testhost.toStdString().c_str(), testport);
+
         //test connection
         //if success set bconnected = true
 

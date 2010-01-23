@@ -9,18 +9,24 @@
 
 using namespace std;
 
+const int buffer_size = 600;
+const int debug = 1;
+
+
 char* calc(char* input, char* address = "127.0.0.1", int port = 9020) {
-	char input_buf[((int) sizeof input) + 1];
+	char input_buf[buffer_size];
+
+	if (debug) {cout << "filling client input buffer" << endl;}
 
 	sprintf(input_buf, input);
 
-
-    cout << "Initializing socket" << endl;
+	if (debug) {cout << "Initializing socket" << endl;}
     int s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s == -1) {
 		perror("Error on initializing socket");
 		exit(1);
 	}
+
 /*
     int p = fork();
 
@@ -40,39 +46,40 @@ char* calc(char* input, char* address = "127.0.0.1", int port = 9020) {
 
     int as = sizeof(a);
 
-    cout << "Connecting host " << address << " port " << port << endl;
+    if (debug) {cout << "Connecting host " << address << " port " << port << endl;}
     int r = connect(s, (struct sockaddr*) &a, as);
 
     if (r == -1) {
-
         perror("Error with client.");
         return "0";
-
     } else {
-
         printf("Connected to server.\n");
     }
 
-   // int i = 0;
+    if (debug) {cout << "Connecting established successfully" << endl;}
 
-    //while (i < 10) {
+	sleep(2);
 
-        sleep(2);
+	if (debug) {cout << "Writing into socket" << endl;}
+	write(s, &input_buf, buffer_size);
+	printf("Sending text: %s\n", input_buf);
 
-        write(s, &input_buf, 300);
-        printf("Sending text: %s\n", input_buf);
-
-        read(s, &input_buf, 300);
-        printf("Receiving text: %s\n", input_buf);
+	if (debug) {cout << "Reading from socket" << endl;}
+	read(s, &input_buf, buffer_size);
+	printf("Receiving text: %s\n", input_buf);
 
 //        i++;
  //   }
 
-    close(s);
+	if (debug) {cout << "Closing socket" << endl;}
+	close(s);
 
-    ostringstream o;
+	if (debug) {cout << "Convert result" << endl;}
+
+	ostringstream o;
     o << input_buf;
 
+    if (debug) {cout << "Leaving client" << endl;}
     return (char*) o.str().c_str();
     //return 0;
 
