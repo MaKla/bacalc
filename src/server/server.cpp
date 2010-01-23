@@ -7,11 +7,20 @@
 #include <iostream>
 #include <stdlib.h>
 #include <tools.cpp>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+
+#include <netinet/in.h>
+
+
+//#include <netinet/in.h>
 
 const char* address = "127.0.0.1";
 const int port = 9020;
 
 using namespace std;
+
 
 class BacalcServer {
 public:
@@ -48,6 +57,14 @@ int main() {
 		perror("Error on initializing socket");
 		exit(1);
 	}
+
+    int set = 1;
+
+
+    //setsockopt(s, SOL_SOCKET, SOF_NOSIGPIPE, (void *)&set, sizeof(int));
+    //setsockopt(s, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
+    setsockopt(s, SOL_SOCKET, MSG_NOSIGNAL, (void *)&set, sizeof(int));
+
 
     struct sockaddr_in sa;
 
@@ -94,7 +111,7 @@ int main() {
 
 		BacalcServer* bacalc_s = new BacalcServer();
 
-		while (1) {
+		//while (1) {
 
 			if (read(cls, &strg, 300) == -1 ){
 				perror("Error while reading");
@@ -107,13 +124,14 @@ int main() {
 
 
 			cout << "Sending Result '" << strg << "'" << endl;
-			if (write(cls, &strg, 300) == -1 ){
+			//if (write(cls, &strg, 300) == -1){
+			if (send(cls, &strg, (size_t) 300, MSG_NOSIGNAL) == -1){
 				perror("Error while writing");
 			}
 
-		}
+		//}
 
-		//close(cls);
+		close(cls);
     }
     close(s);
 }

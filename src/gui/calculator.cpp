@@ -3,10 +3,11 @@
 #include "Parser.cpp"
 #include "../client/client.cpp"
 
-QString *host;
-int *port;
+QString host;
+int port;
 QString term;
 
+const int gui_debug = 1;
 
 Calculator::Calculator(QWidget *parent) :
     QWidget(parent),
@@ -73,18 +74,23 @@ void Calculator::testConnection()
 
         if (atoi(result) == 7)
         {
+        	if (gui_debug) {cout << "show information box: connection test success" << endl;}
             QMessageBox::information(this,tr("Connection test success"),tr("Test sucessfull"));
+
             ui->makeconButton->setEnabled(true);
-            *host = testhost;
-            *port = testport;
+
+            host = testhost;
+            port = testport;
         }
         else
         {
+        	if (gui_debug) {cout << "show critical message box: connection failed" << endl;}
             QMessageBox::critical(this,tr("Connection failed"),tr("Connection failed, please verify host and port"));
         }
 
 
     }
+    if (gui_debug) {cout << "Leaving function Calculator::testConnection()" << endl;}
 }
 
 void Calculator::makeConnection()
@@ -103,8 +109,8 @@ void Calculator::submitTerm()
    //send term to server
    char* tempresult = calc(
         (char*) validterm.toStdString().c_str(),
-        (char*) (*host).toStdString().c_str(),
-        *port
+        (char*) host.toStdString().c_str(),
+        port
    );
 
    //cast char to QString
@@ -118,12 +124,12 @@ void Calculator::submitTerm()
 
 void Calculator::checkConnection()
 {
-    *host = ui->hostInput->text();
+    host = ui->hostInput->text();
     if (!ui->testconButton->isEnabled()==true)
     {
         ui->testconButton->setEnabled(true);
     }
-    if (host->length() <= 0)
+    if (host.length() <= 0)
     {
         ui->testconButton->setEnabled(false);
     }
