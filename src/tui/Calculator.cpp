@@ -1,12 +1,9 @@
 #include <iostream>
-#include "Parser.cpp"
-#include <../client/client.cpp>
-/*
-#include <QObject>
-#include <QApplication>
-#include <QTcpSocket>
-#include <QHostAddress>
-*/
+#include "parser.cpp"
+#include "client.cpp"
+//#include "client.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void input() {
 	{

@@ -3,7 +3,9 @@
 
 #include <QWidget>
 #include <QMessageBox>
-#include <sstream>
+
+
+
 namespace Ui {
     class Calculator;
 }

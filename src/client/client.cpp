@@ -1,5 +1,6 @@
 #ifndef CLIENT_TCP_SOURCE
 #define CLIENT_TCP_SOURCE
+
 #include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +14,7 @@ const int buffer_size = 600;
 const int debug = 1;
 
 
-char* calc(char* input, char* address = "127.0.0.1", int port = 9020) {
+char* remote_calc(char* input, char* address = "127.0.0.1", int port = 9020) {
 	char input_buf[buffer_size];
 
 	if (debug) {cout << "filling client input buffer" << endl;}

@@ -3,7 +3,9 @@ all: tui gui server
 
 
 tui:
-	g++ src/tui/Calculator.cpp -o bin/tui
+	cd src/tui; \
+	make; \
+	mv tui ../bin
     
 gui:
 	cd src/gui; \
@@ -13,10 +15,10 @@ gui:
 
 server:
 	cd src/server; \
-	qmake -makefile; \
-	make
-	mv src/server/network2 bin/server
+	make; \
+	mv server ../bin
 
 clean:
 	rm bin/*
+	rm src/*/*.o
 

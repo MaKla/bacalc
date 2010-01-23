@@ -1,7 +1,8 @@
 #include "calculator.h"
 #include "ui_calculator.h"
-#include "Parser.cpp"
-#include "../client/client.cpp"
+#include "parser.cpp"
+#include "client.cpp"
+#include <sstream>
 
 QString host;
 int port;
@@ -67,7 +68,7 @@ void Calculator::testConnection()
     else
     {
         cout << testport << endl;
-        char* result = calc("3+4", (char*) testhost.toStdString().c_str(), testport);
+        char* result = remote_calc("3+4", (char*) testhost.toStdString().c_str(), testport);
 
         //test connection
         //if success set bconnected = true
@@ -107,7 +108,7 @@ void Calculator::submitTerm()
    //string test = term.fromStdString( p->validate(term.toStdString()));
    QString validterm = term.fromStdString(p->validate(term.toStdString()));
    //send term to server
-   char* tempresult = calc(
+   char* tempresult = remote_calc(
         (char*) validterm.toStdString().c_str(),
         (char*) host.toStdString().c_str(),
         port
