@@ -37,7 +37,7 @@ char* remote_calc(char* input, char* address = "127.0.0.1", int port = 9020) {
 
     if (p == 0) execl(path, NULL);
 */
-    sleep(2);
+    //sleep(2);
 
     struct sockaddr_in a;
 
@@ -59,7 +59,7 @@ char* remote_calc(char* input, char* address = "127.0.0.1", int port = 9020) {
 
     if (debug) {cout << "Connecting established successfully" << endl;}
 
-	sleep(2);
+	//sleep(2);
 
 	if (debug) {cout << "Writing into socket" << endl;}
 	write(s, &input_buf, buffer_size);

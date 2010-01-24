@@ -2,8 +2,8 @@
  *  Parser.cpp
  *  test
  *
- *  Created by Martin Röbert on 18.01.10.
- *  Copyright 2010 Martin Röbert. All rights reserved.
+ *  Created by Martin Roebert on 18.01.10.
+ *  Copyright 2010 Martin Roebert. All rights reserved.
  *
  */
 
@@ -24,6 +24,9 @@ public:
 	const static int FACULTY = 3;
 	
 	string validate(string validationForm){
+
+		printf("Parser->validate('%s')\n", validationForm.c_str());
+
 		// loop var
 		int i;
 		for (i=0;i<validationForm.length();i++){
@@ -36,7 +39,8 @@ public:
 				// only numbers are allowed at the first position of the formula
 				if(checkValidChar(step) == NUMBER){
 					printf("\033[22;32mConstruct formula: %s",&step);
-					validForm.append(&step);
+					validForm += step;
+					//validForm.append(&step);
 				} else {
 					printf("\033[22;31m First sign has to be a number but is %s- deleting this sign;\n",&step);
 				}
@@ -44,14 +48,16 @@ public:
 				// numbers are allowed at every position
 				if(checkValidChar(step) == NUMBER){
 					printf("\033[22;32m%s",&step);
-					validForm.append(&step);
+					validForm += step;
+					//validForm.append(&step);
 				} else if(checkValidChar(step) == OPER) {
 					// if oper is not at the end of the formula
 					if(i != validationForm.length()-1){
 						// allow numbers
 						if(checkValidChar(validationForm.at(i-1)) == NUMBER){
 							printf("\033[22;32m%s",&step);
-							validForm.append(&step);
+							validForm += step;
+							//validForm.append(&step);
 						}
 						// current position is operator and not the last sign in formula;
 						// and now previous is a faculty or NAN
@@ -62,7 +68,8 @@ public:
 								// same procedure as last year... numbers are allowed and
 								if(checkValidChar(validationForm.at(j)) == NUMBER){
 									printf("\033[22;32m%s",&step);
-									validForm.append(&step);
+									//validForm.append(&step);
+									validForm += step;
 									// break lop
 									j=0;
 								} 
@@ -98,7 +105,8 @@ public:
 		// append faculty
 		if(checkValidChar(validationForm.at(validationForm.length()-1)) == FACULTY){
 			printf("\033[22;34m \nYou wanted to faculty the formula - Have to add !\n");
-			validForm.append("!");
+			validForm += "!";
+			//validForm.append("!");
 		}
 		return validForm;
 	}

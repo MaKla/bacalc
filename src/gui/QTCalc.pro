@@ -4,9 +4,9 @@
 TARGET = QTCalc
 TEMPLATE = app
 SOURCES += main.cpp \
-    calculator.cpp \
-    ../client/client.cpp \
-    ../validator/parser.cpp
+    calculator.cpp
+#    ../client/client.cpp \
+#    ../validator/parser.cpp
 HEADERS += calculator.h
 FORMS += calculator.ui
 

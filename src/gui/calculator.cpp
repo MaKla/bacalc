@@ -100,16 +100,21 @@ void Calculator::makeConnection()
 }
 void Calculator::submitTerm()
 {
+	if (gui_debug) {cout << "Entering function Calculator::submitTerm()" << endl;}
     term = ui->termInput->text();
+    if (gui_debug) {cout << "Got term: " << term.toStdString() << endl;}
     Parser* p = new Parser();
     ostringstream result ;
     QString qstringResult ;
     //validate Term
    //string test = term.fromStdString( p->validate(term.toStdString()));
    QString validterm = term.fromStdString(p->validate(term.toStdString()));
+   if (gui_debug) {cout << "Validated term: " << term.toStdString() << endl;}
+   cout << (char*) host.toStdString().c_str() << endl;
+   cout << port << endl;
    //send term to server
    char* tempresult = remote_calc(
-        (char*) validterm.toStdString().c_str(),
+		(char*) validterm.toStdString().c_str(),
         (char*) host.toStdString().c_str(),
         port
    );
@@ -117,10 +122,13 @@ void Calculator::submitTerm()
    //cast char to QString
    result << tempresult ;
 
-   qstringResult.fromStdString(result.str());
+   qstringResult.fromAscii(tempresult);
+   cout << qstringResult.toStdString() << endl;
    //show result
    ui->termInput->setText(qstringResult);
     //submit term to server
+   if (gui_debug) {cout << "Leaving function Calculator::submitTerm()" << endl;}
+
 }
 
 void Calculator::checkConnection()
