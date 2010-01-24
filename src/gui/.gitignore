@@ -1,0 +1,4 @@
+QTCalc
+Makefile*
+moc_calculator.cpp
+ui_calculator.h
