@@ -13,7 +13,6 @@
 
 #include <netinet/in.h>
 
-
 //#include <netinet/in.h>
 
 const char* address = "127.0.0.1";
@@ -63,7 +62,7 @@ int main() {
 
     //setsockopt(s, SOL_SOCKET, SOF_NOSIGPIPE, (void *)&set, sizeof(int));
     //setsockopt(s, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
-    setsockopt(s, SOL_SOCKET, MSG_NOSIGNAL, (void *)&set, sizeof(int));
+    //setsockopt(s, SOL_SOCKET, MSG_NOSIGNAL, (void *)&set, sizeof(int));
 
 
     struct sockaddr_in sa;
@@ -125,8 +124,9 @@ int main() {
 
 			cout << "Sending Result '" << strg << "'" << endl;
 			//if (write(cls, &strg, 300) == -1){
-			if (send(cls, &strg, (size_t) 300, MSG_NOSIGNAL) == -1){
-				perror("Error while writing");
+			//if (send(cls, &strg, (size_t) 300, MSG_NOSIGNAL) == -1){
+			if (send(cls, &strg, (size_t) 300, 0) == -1){
+							perror("Error while writing");
 			}
 
 		//}

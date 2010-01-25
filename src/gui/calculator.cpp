@@ -119,13 +119,22 @@ void Calculator::submitTerm()
         port
    );
 
+   if (gui_debug) {cout << "Tempresult: " << tempresult << endl;}
+
    //cast char to QString
    result << tempresult ;
 
-   qstringResult.fromAscii(tempresult);
-   cout << qstringResult.toStdString() << endl;
+   string casted_result = result.str();
+
+   if (gui_debug) {cout << "casted_result: " << casted_result << endl;}
+   qstringResult = QString::fromStdString(casted_result);
+   if (gui_debug) {cout << "qstringResult: " << qstringResult.toStdString() << endl;}
+
    //show result
    ui->termInput->setText(qstringResult);
+   //ui->termInput->insert(qstringResult);
+   if (gui_debug) {cout << "termInput->text: " << ui->termInput->text().toStdString() << endl;}
+
     //submit term to server
    if (gui_debug) {cout << "Leaving function Calculator::submitTerm()" << endl;}
 
@@ -147,6 +156,8 @@ void Calculator::checkConnection()
 void Calculator::checkTerm()
 {
     term = ui->termInput->text();
+    if (gui_debug) {cout << "Calculator::checkTerm() -> " << term.toStdString() << endl;}
+
     if (! ui->submitButton->isEnabled()==true)
     {
         ui->submitButton->setEnabled(true);
