@@ -13,7 +13,6 @@
 
 #include <netinet/in.h>
 
-
 const char* address = "127.0.0.1";
 const int port = 9020;
 

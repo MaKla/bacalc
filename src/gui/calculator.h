@@ -4,31 +4,29 @@
 #include <QWidget>
 #include <QMessageBox>
 
-
-
 namespace Ui {
-    class Calculator;
+class Calculator;
 }
 
-class Calculator : public QWidget {
-    Q_OBJECT
+class Calculator: public QWidget {
+Q_OBJECT
 public:
-    Calculator(QWidget *parent = 0);
-    ~Calculator();
+	Calculator(QWidget *parent = 0);
+	~Calculator();
 
 protected:
-    void changeEvent(QEvent *e);
+	void changeEvent(QEvent *e);
 
 private:
-    Ui::Calculator *ui;
+	Ui::Calculator *ui;
 
-//action handler
+	//action handler
 public slots:
-    void testConnection();
-    void makeConnection();
-    void submitTerm();
-    void checkConnection();
-    void checkTerm();
+	void testConnection();
+	void makeConnection();
+	void submitTerm();
+	void checkConnection();
+	void checkTerm();
 
 };
 

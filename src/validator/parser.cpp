@@ -32,25 +32,23 @@ public:
 			// stores .at(i) - if the .append- function is called with &validationForm.at(i)
 			// the complete validationForm is appended
 			step = validationForm.at(i);
-			//cout << "Iterationsnummer. " << i << " Gerade zu parsendes Zeichen: " << step <<endl;
-			//cout << "Validierte Formel aus Schritt " << i-1<<": " << validForm << endl;
+
 			if (i == 0) {
 				// only numbers are allowed at the first position of the formula
 				if (checkValidChar(step) == NUMBER) {
 					printf("\033[22;32mConstruct formula: %s", &step);
 					validForm += step;
-					//validForm.append(&step);
 				} else {
 					printf(
 							"\033[22;31m First sign has to be a number but is %s- deleting this sign;\n",
 							&step);
 				}
+
 			} else {
 				// numbers are allowed at every position
 				if (checkValidChar(step) == NUMBER) {
 					printf("\033[22;32m%s", &step);
 					validForm += step;
-					//validForm.append(&step);
 				} else if (checkValidChar(step) == OPER) {
 					// if oper is not at the end of the formula
 					if (i != validationForm.length() - 1) {
@@ -72,7 +70,6 @@ public:
 								if (checkValidChar(validationForm.at(j))
 										== NUMBER) {
 									printf("\033[22;32m%s", &step);
-									//validForm.append(&step);
 									validForm += step;
 									// break lop
 									j = 0;
@@ -102,6 +99,7 @@ public:
 				}
 			}
 		}
+
 		// clean up last opererator if possible.
 		// this must happen due to the fact, that the above algorithm cant recognize
 		// more than 1 operator at the end of the formula
@@ -110,6 +108,7 @@ public:
 			printf("\033[22;31m \nRemove last operator %s \n", &errorChar);
 			validForm.erase(validForm.length() - 1);
 		}
+
 		// append faculty
 		if (checkValidChar(validationForm.at(validationForm.length() - 1))
 				== FACULTY) {
