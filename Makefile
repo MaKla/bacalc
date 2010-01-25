@@ -4,8 +4,8 @@ all: tui gui server
 
 tui:
 	cd src/tui; \
-	make; \
-	mv tui ../bin
+	make
+	mv src/tui/tui bin/tui
     
 gui:
 	cd src/gui; \
@@ -15,8 +15,8 @@ gui:
 
 server:
 	cd src/server; \
-	make; \
-	mv server ../bin
+	make
+	mv src/server/server bin/server
 
 clean:
 	rm bin/*
