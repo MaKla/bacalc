@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+string host;
+string port;
+
 void input() {
 	string inputFormula;
 	Parser* p = new Parser();
@@ -14,22 +17,26 @@ void input() {
 	cout << outputFormula << endl;
 	printf("\033[22;30m");
 
-	char* result = remote_calc((char*) outputFormula.c_str(),host, port);
+	char* result = remote_calc(
+		(char*) outputFormula.c_str(),
+		(char*) host.c_str(),
+		atoi(port.c_str())
+	);
 
 	cout << "Result: " << result << endl;
 }
 
 int main(int argc, char** argv) {
 	string menuElect;
-	string host, port;
+
 	bool cond = true;
 
-	cout << "Please enter servername or ip(localhost): ";
+	cout << "Please enter server ip [127.0.0.1]: ";
 	getline(cin, host);
 	if(host.empty()){
-		host = "localhost";
+		host = "127.0.0.1";
 	}
-	cout << "Please enter port(9020): ";
+	cout << "Please enter port [9020]: ";
 	getline(cin, port);
 	while (cond) {
 		if(port.empty()){

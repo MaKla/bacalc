@@ -13,6 +13,8 @@
 
 #include <netinet/in.h>
 
+//#include <netinet/in.h>
+
 const char* address = "127.0.0.1";
 const int port = 9020;
 
@@ -36,10 +38,16 @@ public:
 
 		return (char*) r.str().c_str();
 	}
-
+	/*
+	 void echo() {
+	 cout << "asdf" << endl;
+	 }
+	 */
 };
 
 int main() {
+
+	//double calc_result;
 
 	cout << "Initializing socket" << endl;
 	int s = socket(AF_INET, SOCK_STREAM, 0);
@@ -49,6 +57,10 @@ int main() {
 	}
 
 	int set = 1;
+
+	//setsockopt(s, SOL_SOCKET, SOF_NOSIGPIPE, (void *)&set, sizeof(int));
+	//setsockopt(s, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
+	//setsockopt(s, SOL_SOCKET, MSG_NOSIGNAL, (void *) &set, sizeof(int));
 
 	struct sockaddr_in sa;
 
@@ -64,6 +76,8 @@ int main() {
 		perror("Error while binding socket");
 		exit(1);
 	}
+
+	//bind(s, (struct sockaddr*) &sa, sas);
 
 	char strg[300];
 
@@ -87,19 +101,28 @@ int main() {
 
 		char hello[300] = "Hello!";
 
+		//ostringstream incoming_converter;
+		//ostringstream outgoing_converter;
+
 		BacalcServer* bacalc_s = new BacalcServer();
+
+		//while (1) {
 
 		if (read(cls, &strg, 300) == -1) {
 			perror("Error while reading");
 		}
 		cout << "Incoming request '" << strg << "'" << endl;
 
+		//strcat(strg, bacalc_s->bla(strg));
 		sprintf(strg, bacalc_s->bla(strg));
 
 		cout << "Sending Result '" << strg << "'" << endl;
+		//if (write(cls, &strg, 300) == -1){
 		if (send(cls, &strg, (size_t) 300, 0) == -1) {
 			perror("Error while writing");
 		}
+
+		//}
 
 		close(cls);
 	}
