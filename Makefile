@@ -14,6 +14,7 @@ tui:
 gui:
 	cd src/gui; \
 	qmake -makefile; \
+	make clean; \
 	make
 ifeq ($(UNAME),Darwin)
 	mv src/gui/QTCalc.app/Contents/MacOS/QTCalc bin/gui

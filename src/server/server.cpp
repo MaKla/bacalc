@@ -15,8 +15,8 @@
 
 //#include <netinet/in.h>
 
-const char* address = "127.0.0.1";
-const int port = 9020;
+const char* address = "172.16.109.31";
+const int port = 5800;
 
 using namespace std;
 
