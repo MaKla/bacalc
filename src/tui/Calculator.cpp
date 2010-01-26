@@ -14,7 +14,7 @@ void input() {
 	cout << outputFormula << endl;
 	printf("\033[22;30m");
 
-	char* result = remote_calc((char*) outputFormula.c_str());
+	char* result = remote_calc((char*) outputFormula.c_str(),host, port);
 
 	cout << "Result: " << result << endl;
 }
@@ -24,15 +24,21 @@ int main(int argc, char** argv) {
 	string host, port;
 	bool cond = true;
 
-	cout << "Please enter servername or ip: ";
+	cout << "Please enter servername or ip(localhost): ";
 	getline(cin, host);
-	cout << "Please enter port: ";
+	if(host.empty()){
+		host = "localhost";
+	}
+	cout << "Please enter port(9020): ";
 	getline(cin, port);
 	while (cond) {
-		if (atoi((char*) port.c_str()) == 0) {
+		if(port.empty()){
+			cond = false;
+			port = 9020;
+		} else if (atoi((char*) port.c_str()) == 0) {
 			printf("\033[22;31mA port can only contain digits.");
 			printf("\033[22;30m\n");
-			cout << "Please enter port: ";
+			cout << "Please enter port(9020): ";
 			getline(cin, port);
 		} else {
 			cond = false;
