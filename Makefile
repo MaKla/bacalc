@@ -1,6 +1,10 @@
 
-all: tui gui server
+UNAME := $(shell uname)
 
+all: bin_folder tui gui server
+
+bin_folder:
+	mkdir -p bin
 
 tui:
 	cd src/tui; \
@@ -11,7 +15,12 @@ gui:
 	cd src/gui; \
 	qmake -makefile; \
 	make
+ifeq ($(UNAME),Darwin)
+	mv src/gui/QTCalc.app/Contents/MacOS/QTCalc bin/gui
+endif
+ifeq ($(UNAME),Linux)
 	mv src/gui/QTCalc bin/gui
+endif
 
 server:
 	cd src/server; \
