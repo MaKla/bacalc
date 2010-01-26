@@ -1,0 +1,14 @@
+Bacalc Remote Calculator
+
+Just execute 'make' in the root folder of this project.
+
+Binaries can be found in project_root/bin directory.
+
+Prerequisites:
+- QT 4.x dev
+- Unix-based OS (Linux, MacOS)
+
+Testet with:
+- Mac OS X 10.6
+- Debian 5
+- Kubuntu 8.1
