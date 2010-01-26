@@ -27,6 +27,9 @@ server:
 	make
 	mv src/server/server bin/server
 
+zip: all
+	zip fuer_roebi.zip bin/*
+
 clean:
 	rm bin/*
 	rm src/*/*.o
