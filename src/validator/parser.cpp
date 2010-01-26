@@ -15,17 +15,24 @@
 using namespace std;
 
 class Parser {
-
+	
 public:
 	const static int NAN = 0;
 	const static int NUMBER = 1;
 	const static int OPER = 2;
 	const static int FACULTY = 3;
+<<<<<<< HEAD
+	const static int SEPARATOR = 4;
+	
+	string validate(string validationForm){
+		
+=======
 
 	string validate(string validationForm) {
 
+>>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 		printf("Parser->validate('%s')\n", validationForm.c_str());
-
+		
 		// loop var
 		int i;
 		for (i = 0; i < validationForm.length(); i++) {
@@ -95,6 +102,54 @@ public:
 								}
 							}
 						}
+<<<<<<< HEAD
+					}
+				} else if(checkValidChar(step) == SEPARATOR){
+					// encounter multiple separators in valid form
+					bool encounter = false;
+					int j = validForm.length();
+					int k = -1;
+					while(j>-1) {
+						// break loop, if first char of valid form and first char is number and append sep
+						if(j==0 && checkValidChar(validForm.at(j)) == NUMBER){
+							validForm += step;
+							j=-1;
+							break;
+						}
+						// if if previous char is an operator and current a number -> cycle through loop until this matches
+						else if(checkValidChar(validForm.at(j-1)) == OPER && checkValidChar(validForm.at(j)) ==NUMBER){
+							if(k==-1){
+								k=j;
+								// do until k reaches and of the valid form
+								while(k<validForm.length()){
+									// if we encounter a separator: set the var
+									if(checkValidChar(validForm.at(k)) == SEPARATOR){
+										encounter = true;
+									}
+									//increment
+									k++;
+								}
+								// if we did not encountered a separator..
+								if(!encounter){
+									// append my separator to the valid form...
+									validForm += step;
+									// and break all loops;
+									j=0;
+									break;
+								}
+								// if opposite
+								else{
+									// reset encounter
+									encounter = false;
+									// break loops
+									j=0;
+									break;
+								}
+							}
+						}
+						j--;
+=======
+>>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 					}
 				}
 			}
@@ -119,14 +174,21 @@ public:
 		}
 		return validForm;
 	}
-
+	
 	string validForm;
 	char step;
 	char errorChar;
+<<<<<<< HEAD
+	
+	map<char,int> validChars;
+	map<char,int>::iterator validCharsIterator;
+	
+=======
 
 	map<char, int> validChars;
 	map<char, int>::iterator validCharsIterator;
 
+>>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 	/*
 	 * return 1 numbers
 	 * return 2 operators
@@ -135,6 +197,26 @@ public:
 	 */
 	int checkValidChar(char isValid) {
 		//int Parser::checkValidChar(char isValid){
+<<<<<<< HEAD
+		
+		validChars['1']=NUMBER;
+		validChars['2']=NUMBER;
+		validChars['3']=NUMBER;
+		validChars['4']=NUMBER;
+		validChars['5']=NUMBER;
+		validChars['6']=NUMBER;
+		validChars['7']=NUMBER;
+		validChars['8']=NUMBER;
+		validChars['9']=NUMBER;
+		validChars['0']=NUMBER;
+		validChars['+']=OPER;
+		validChars['-']=OPER;
+		validChars['/']=OPER;
+		validChars['*']=OPER;
+		validChars['.']=SEPARATOR;
+		validChars['!']=FACULTY;
+		
+=======
 
 		validChars['1'] = NUMBER;
 		validChars['2'] = NUMBER;
@@ -152,6 +234,7 @@ public:
 		validChars['*'] = OPER;
 		validChars['!'] = FACULTY;
 
+>>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 		// the iterator returned by .find()
 		validCharsIterator = validChars.find(isValid);
 		// if element wasnt found, the end of the map is returned
