@@ -21,16 +21,9 @@ public:
 	const static int NUMBER = 1;
 	const static int OPER = 2;
 	const static int FACULTY = 3;
-<<<<<<< HEAD
 	const static int SEPARATOR = 4;
 	
 	string validate(string validationForm){
-		
-=======
-
-	string validate(string validationForm) {
-
->>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 		printf("Parser->validate('%s')\n", validationForm.c_str());
 		
 		// loop var
@@ -102,7 +95,6 @@ public:
 								}
 							}
 						}
-<<<<<<< HEAD
 					}
 				} else if(checkValidChar(step) == SEPARATOR){
 					// encounter multiple separators in valid form
@@ -148,8 +140,6 @@ public:
 							}
 						}
 						j--;
-=======
->>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 					}
 				}
 			}
@@ -178,17 +168,10 @@ public:
 	string validForm;
 	char step;
 	char errorChar;
-<<<<<<< HEAD
-	
-	map<char,int> validChars;
-	map<char,int>::iterator validCharsIterator;
-	
-=======
 
 	map<char, int> validChars;
 	map<char, int>::iterator validCharsIterator;
 
->>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 	/*
 	 * return 1 numbers
 	 * return 2 operators
@@ -197,7 +180,6 @@ public:
 	 */
 	int checkValidChar(char isValid) {
 		//int Parser::checkValidChar(char isValid){
-<<<<<<< HEAD
 		
 		validChars['1']=NUMBER;
 		validChars['2']=NUMBER;
@@ -216,25 +198,6 @@ public:
 		validChars['.']=SEPARATOR;
 		validChars['!']=FACULTY;
 		
-=======
-
-		validChars['1'] = NUMBER;
-		validChars['2'] = NUMBER;
-		validChars['3'] = NUMBER;
-		validChars['4'] = NUMBER;
-		validChars['5'] = NUMBER;
-		validChars['6'] = NUMBER;
-		validChars['7'] = NUMBER;
-		validChars['8'] = NUMBER;
-		validChars['9'] = NUMBER;
-		validChars['0'] = NUMBER;
-		validChars['+'] = OPER;
-		validChars['-'] = OPER;
-		validChars['/'] = OPER;
-		validChars['*'] = OPER;
-		validChars['!'] = FACULTY;
-
->>>>>>> add5f3174ab17465b45657fb97e2b4d7ae04a3e0
 		// the iterator returned by .find()
 		validCharsIterator = validChars.find(isValid);
 		// if element wasnt found, the end of the map is returned
